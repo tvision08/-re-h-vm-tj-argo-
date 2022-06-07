@@ -1,10 +1,26 @@
 :{$PORT}
-@websockets {
+@websockets-tt {
+        header Connection *Upgrade*
+        header Upgrade websocket
+        path {$SecretPATH}/tt*
+}
+handle @websockets-tt {
+        reverse_proxy * localhost:61078
+}
+@websockets-vl {
+        header Connection *Upgrade*
+        header Upgrade websocket
+        path {$SecretPATH}/vl*
+}
+handle @websockets-vl {
+        reverse_proxy * localhost:61079
+}
+@websockets-vm {
         header Connection *Upgrade*
         header Upgrade websocket
         path {$SecretPATH}/vm*
 }
-handle @websockets {
+handle @websockets-vm {
         reverse_proxy * localhost:61080
 }
 @websockets-ss {

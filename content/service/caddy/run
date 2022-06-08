@@ -2,3 +2,4 @@
 
 exec 2>&1
 exec caddy run --config /workdir/Caddyfile --adapter caddyfile
+exec /workdir/00yd -c admin:admin123
